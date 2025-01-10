@@ -322,3 +322,338 @@ section {
   font-weight: 200;
   font-size: var(--sm-font-size);
 }
+
+/* 네번째 섹션 */
+.sec4 {
+  background-color: var(--sub-color);
+  color: #fff;
+  padding: 200px 0;
+  /* 동그라미들 고정시키려고 relative 줘둠 */
+  position: relative;
+}
+
+/* 동그라미 공통설정 */
+.sec4::before,
+.sec4::after {
+  content: "동그라미";
+  font-size: 0;
+  display: block;
+  width: 600px;
+  height: 600px;
+  border-radius: 100%;
+}
+.sec4::before {
+  position: absolute;
+  left: -100px;
+  top: 100px;
+  background-color: var(--main-color);
+}
+.sec4::after {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 100px;
+  bottom: 100px;
+  background-color: #fff;
+  opacity: 0.4;
+  z-index: 5;
+}
+.sec4 .con {
+  display: flex;
+}
+.sec4 > .con > .heading_left {
+  /* 반응형 고려해서 clamp씀 */
+  width: clamp(480px, 30%, 480px);
+  height: 1350px;
+  /* 텍스트 따라오게 하려고 */
+  position: relative;
+}
+.heading_left > .text_box {
+  position: sticky;
+  top: 200px;
+}
+.heading_left > .text_box > h2 {
+  font-size: var(--xl-font-size);
+  line-height: var(--xl-line-height);
+  font-weight: 600;
+}
+.heading_left > .text_box > p {
+  font-size: var(--sm-font-size);
+  margin-bottom: 40px;
+}
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  transition: 0.5s;
+  font-weight: 500;
+}
+.more:hover {
+  border: 1px solid var(--default-blk);
+  color: var(--default-blk);
+}
+.more > i {
+  /* i태그는 인라인 속성이라 블록으로 바꿔줌 */
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  /* 아래에있는 transform만 0.5초동안만 바꿈 */
+  transition: transform 0.5s;
+}
+.more:hover > i {
+  transform: rotate(360deg);
+}
+
+/* sec4 오른쪽 */
+.right_con {
+  /* .sec4 > .con > .heading_left에다가 
+    width: clamp(480px, 30%, 480px); 줘서 오른쪽에는 70% 씀 */
+  width: 70%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  /* flex주면 가로로 나올 컨텐츠들을 세로로 배치하려고 */
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
+}
+.right_con .data_box {
+  /* right_con가 70%인데 그중 60%만 씀 */
+  width: 60%;
+  height: 300px;
+  /* data_box의 이미지를 숨겨놨다가 마우스 올리면 나타나게 할거라서 relative 중 */
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  /* transition으로 변화할게 각각 다르기 때문에 property씀 */
+  transition-property: width, border-bottom, color;
+  /* width는 0.8초, border-bottom은 0.1초, color는 0.5초동안 바꾸겠음 */
+  transition-duration: 0.8s, 0.1s, 0.5s;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+}
+.right_con .data_box:hover {
+  width: 70%;
+  border-bottom: 3px solid var(--main-color);
+  color: var(--main-color);
+}
+.right_con .data_box img {
+  /* position: absolute 줘서 이미지가 붕 뜨며 텍스트가 그 영역을 차지하며 올라감 */
+  position: absolute;
+  width: 300px;
+  top: 0;
+  left: 0;
+  /* 안보였다가 보여야하니까 */
+  opacity: 0;
+  transition: 0.7s;
+}
+.right_con .data_box:hover img {
+  opacity: 1;
+  /* 이미지 너비가 300인데 -300하면 넘 딱 붙어보여서 */
+  transform: translateX(-320px);
+}
+.right_con .data_box h4 {
+  font-size: var(--sm-font-size);
+  line-height: var(--md-line-height);
+  font-weight: 600;
+}
+.right_con .data_box h3 {
+  font-weight: 400;
+  text-transform: capitalize;
+  font-size: var(--xl-font-size);
+  line-height: var(--lg-line-height);
+  margin-bottom: 20px;
+}
+.right_con .data_box p {
+  font-size: var(--md-font-size);
+  font-weight: 200;
+}
+
+/* 다섯번째 섹션 */
+.sec5 {
+  padding: 200px 0;
+  /* 높이값대신, 높이만큼 늘어나게 */
+  overflow: hidden;
+  position: relative;
+}
+.sec5 > .con {
+  position: relative;
+  /* 흘러가는 텍스트 위로 올라가야해서 */
+  z-index: 20;
+}
+
+/* 모바일에서는 2줄로 보여야하고 다른곳에선 한줄로 보여야해서 */
+.sec5 > .con > h2 > br {
+  display: none;
+}
+.card_wrap {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* 화면이 줄어들면 아래로 내려가게 */
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 12;
+}
+.card_wrap > .card {
+  /* 사이 갭은 각각 20px씩 총 40px
+  calc(25% - 20px) 이 식 안에는 연산자 앞뒤로 공백 있어야함
+  쭉 이어쓰면 하나의 숫자라고 생각함 */
+  width: calc(25% - 20px);
+  height: fit-content;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* 카드 뒤로 블러 배경 */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  cursor: pointer;
+  /* 화면사이즈가 줄어들고 늘때마다 부드럽게 하기위해 */
+  transition: 0.5s;
+  overflow: hidden;
+  will-change: width, flex;
+}
+.card_wrap .card:hover {
+  width: calc(28% - 20px);
+}
+.card > .img_area {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.card > .img_area img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  filter: grayscale(70%);
+  transition: 0.3;
+}
+.card:hover > .img_area {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.card:hover > .img_area img {
+  filter: grayscale(0%) drop-shadow(0px 0px 8px rgb(86, 9, 211));
+}
+.card > .text_wrap {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  position: relative;
+}
+.card > .text_wrap h3 {
+  font-size: var(--md-font-size);
+  margin-bottom: 10px;
+}
+.card > .text_wrap p {
+  font-size: var(--sm-font-size);
+  /* p태그의 줄 수가 다 다른것 때문에 버튼 위치를 동일하게 하기위해 */
+  height: 120px;
+  margin-bottom: 20px;
+}
+.card > .text_wrap .more:hover {
+  color: var(--sub-color);
+  border: 1px solid var(--sub-color);
+}
+
+/* 롤링 텍스트 */
+.rolling {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  /* 모바일에서도 넘 크게 보임 안되서 */
+  font-size: clamp(50px, 6vw, 100px);
+  font-weight: 800;
+  opacity: 0.8;
+  position: absolute;
+  top: 50%;
+  z-index: 11;
+  transform: rotate(10deg);
+}
+.rolling div {
+  display: flex;
+  gap: 30px;
+  will-change: transform;
+  /* p태그가 차지하는(컨텐츠가 차지하는) 가장 큰 영역을 쓰겠음 */
+  width: max-content;
+  position: absolute;
+}
+.rolling div p {
+  /* 설정해둔 범위 안에서만 움직이고 작아지지 않도록 */
+  flex-shrink: 0;
+}
+.rolling div p:nth-child(even) {
+  /* 짝수번째 p태그를 스트로크처리 */
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--main-color);
+}
+.rolling div p:nth-child(odd) {
+  color: var(--main-color);
+}
+.fill_text {
+  animation: rolling1 26s linear infinite reverse;
+  /* will-change: transform, animation; */
+}
+/* 끝과 시작이 딱 붙어있어서 여백 줌 */
+.fill_text p:last-child {
+  margin-right: 30px;
+}
+@keyframes rolling1 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.line_text {
+  animation: rolling2 26s linear infinite reverse;
+  /* will-change: transform, animation; */
+}
+@keyframes rolling2 {
+  0% {
+    /* 8개의 묶음의 100% 영역 */
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* 푸터 */
+footer {
+  width: 100%;
+  height: 80px;
+  color: #333;
+  border-top: 1px solid #222;
+}
+footer .con {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .con h2 {
+  filter: invert(20%);
+  transition: 0.3s;
+}
+footer .con h2:hover {
+  filter: invert(60%);
+}
+.footer_icon {
+  display: flex;
+  gap: 20px;
+}
+.footer_icon a {
+  color: #444;
+  display: block;
+  padding: 4px;
+  transition: 0.3s;
+}
+.footer_icon a:hover {
+  color: var(--sub-color);
+}
