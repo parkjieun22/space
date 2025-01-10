@@ -154,6 +154,7 @@ header:hover {
   border-radius: 100%;
 }
 
+/* 모바일에서만 보이게 할거임 */
 .icons > a:last-child {
   display: none;
 }

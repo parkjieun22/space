@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* 모바일 */
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  /* 공통영역 */
+  .con {
+    width: 95%;
+  }
+  #gnb {
+    display: none;
+  }
+  .icons > a:last-child {
+    display: flex;
+  }
+
+  /* 메인비주얼 */
+  .visual_text {
+    position: absolute;
+    width: 100%;
+    padding: 0 40px;
+    z-index: 2;
+  }
+  .visual_text h2 {
+    font-size: clamp(60px, 4vw, 70px);
+  }
+  .visual_text p {
+    font-size: var(--sm-font-size);
+  }
+
+  /* 메인비주얼  영상 부분 */
+  .visual_video {
+    width: 100%;
+    position: absolute;
+  }
+
+  .sec3,
+  .sec4,
+  .sec5,
+  footer {
+    display: none;
+  }
+}
