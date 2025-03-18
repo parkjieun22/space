@@ -5,8 +5,8 @@
 
 :root {
   /* 컬러 */
-  --main-color: rgba(49, 107, 255, 1);
-  --sub-color: rgba(61, 244, 85, 1);
+  --main-color: #8436fe;
+  --sub-color: #75f94e;
   --default-blk: #020202;
 
   /* 폰트 */
