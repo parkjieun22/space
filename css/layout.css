@@ -471,6 +471,7 @@ section {
 .right_con .data_box p {
   font-size: var(--md-font-size);
   font-weight: 200;
+  letter-spacing: -1.5px;
 }
 
 /* 다섯번째 섹션 */
