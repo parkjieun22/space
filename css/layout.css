@@ -286,6 +286,7 @@ section {
   font-size: var(--xl-font-size);
   font-weight: 500;
   margin-bottom: 40px;
+  line-height: 1.2;
 }
 .sec_title + p {
   font-size: var(--md-font-size);
